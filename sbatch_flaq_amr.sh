@@ -11,5 +11,7 @@
 #SBATCH --output=flaq_amr.%j.out
 #SBATCH --error=flaq_amr.%j.err
 
+module load apptainer
+
 #Run script/command and use $SLURM_CPUS_ON_NODE
 python flaq_amr.py fastqs/ 
