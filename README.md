@@ -19,7 +19,7 @@ Git is already installed in your HPG environment upon login.
 
 ## Usage
 
-For first time use, clone this repository to a directory in blue on HPG, such as in /blue/bphl-\<state\>/\<user\>/repos/bphl-molecular/ on HPG.
+For first time use, clone this repository to a directory in blue on HPG, such as in /blue/bphl-\<state\>/\<user\>/repos/bphl-molecular/.
 ```
 cd /blue/bphl-<state>/<user>/repos/bphl-molecular/
 git clone https://github.com/BPHL-Molecular/flaq_amr.git
@@ -29,7 +29,7 @@ For future use, update any changes to your local repository on HPG by navigating
 cd flaq_amr/
 git pull
 ```
-To run the FLAQ-AMR pipeline, copy all files from the flaq_amr local repository to your analysis folder. Make an input directory and copy your fastqs. Edit your sbatch submissions script. Submit your job.
+To run the FLAQ-AMR pipeline, copy all files from the flaq_amr local repository to your analysis folder. Make an input directory and copy your fastqs.
 ```
 mkdir <analysis_dir>
 cd <analysis_dir>
@@ -43,7 +43,7 @@ cd fastqs/
 for i in *_R1_001.fastq.gz; do mv -- "$i" "${i%[PATTERN to REMOVE]}_1.fastq.gz"; done
 for i in *_R2_001.fastq.gz; do mv -- "$i" "${i%[PATTERN to REMOVE]}_2.fastq.gz"; done
 ```
-Edit your sbatch submission script to include your email to receive an email notification upon job END or FAIL. Replace ENTER EMAIL in `#SBATCH --mail-user=ENTER EMAIL` with your email address. Make sure there is no space between = and your email address. Edit additional sbatch parameters as needed to run your job succesfully, such as the length of time the job will run.
+Edit your sbatch job submission script to include your email to receive an email notification upon job END or FAIL. Replace ENTER EMAIL in `#SBATCH --mail-user=ENTER EMAIL` with your email address. Make sure there is no space between = and your email address. Edit additional sbatch parameters as needed to run your job succesfully, such as the length of time the job will run.
 
 Submit your job.
 ```
@@ -51,26 +51,30 @@ sbatch sbatch_flaq_amr.sh
 ```
 
 ## Main processes
-- Fastqc
-- Trimmomatic
-- BBduk
-- Mash
-- MLST
-- Unicycler
-- Quast
-- Prokka
-- Kraken2
-- AMRFinderPlus
+- [Fastqc](https://github.com/s-andrews/FastQC)
+- [Trimmomatic](https://github.com/usadellab/Trimmomatic)
+- [BBDuk](https://jgi.doe.gov/data-and-tools/software-tools/bbtools/bb-tools-user-guide/bbduk-guide/)
+- [Mash](https://github.com/marbl/Mash)
+- [MLST](https://github.com/tseemann/mlst)
+- [Unicycler](https://github.com/rrwick/Unicycler)
+- [Quast](https://github.com/ablab/quast)
+- [Prokka](https://github.com/tseemann/prokka)
+- [Kraken2](https://github.com/DerrickWood/kraken2)
+- [AMRFinderPlus](https://github.com/ncbi/amr)
 
 ## Primary outputs
+
+Outputs from each process for each individual sample can be found in a sample-specific subdirectory within the FLAQ-AMR analysis directory. Report.txt contains the main summary report with quality metrics, taxonomic id, and ST. Additional details can be found in the report outputs from each process. Final assemblies (.fasta), annotated features (.gff), and amrfinder results are copied into the run directory for easier access for use in downstream analyses.
+
 ```
 analysis_dir/
 |__ <date>_flaq_run/
      |__ report.txt
      |__ sample1/
      |__ sample2/
-|__ assemblies/
+|__ amrfinder_results/
 |__ annotations/
+|__ assemblies/
 ```
 
 ## Developed by:
