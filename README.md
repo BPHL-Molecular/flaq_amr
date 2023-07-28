@@ -40,8 +40,8 @@ cp /path/to/fastqs/*.fastq.gz fastqs/
 Rename your fastq files to the following format: sample_1.fastq.gz, sample_2.fastq.gz. See below for a helpful command to rename your R1 and R2 files.
 ```
 cd fastqs/
-for i in *_R1_001.fastq.gz; do mv -- "$i" "${i%[PATTERN to REMOVE]}_1.fastq.gz"; done
-for i in *_R2_001.fastq.gz; do mv -- "$i" "${i%[PATTERN to REMOVE]}_2.fastq.gz"; done
+for i in *_R1_001.fastq.gz; do mv -- "$i" "${i%-F*}_1.fastq.gz"; done
+for i in *_R2_001.fastq.gz; do mv -- "$i" "${i%-F*}_2.fastq.gz"; done
 ```
 Edit your sbatch job submission script to include your email to receive an email notification upon job END or FAIL. Replace ENTER EMAIL in `#SBATCH --mail-user=ENTER EMAIL` with your email address. Make sure there is no space between = and your email address. Edit additional sbatch parameters as needed to run your job succesfully, such as the length of time the job will run.
 
