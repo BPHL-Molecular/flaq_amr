@@ -2,7 +2,7 @@
 FL BPHL's standard bacterial assembly pipeline for taxonomic characterization and AMR detection
 
 ## About
-FLAQ-AMR was developed to analyze Illumina paired-end, whole-genome sequencing data generated from cultured bacterial isolates. The pipeline generates annotated, de novo assemblies along with reports including quality metrics, taxonomic classification, ST, and AMR/virulence detection. The current version will run only on [HiPerGator](https://www.rc.ufl.edu/about/hipergator/)(HPG) using local Singularity containers for each pipeline process.
+FLAQ-AMR was developed to analyze Illumina paired-end, whole-genome sequencing data generated from cultured bacterial isolates. The pipeline generates annotated, de novo assemblies along with reports including quality metrics, taxonomic classification, ST, and AMR/virulence detection. The current version will run only on [HiPerGator] (https://www.rc.ufl.edu/about/hipergator/)(HPG) using local Singularity containers for each pipeline process.
 
 Stay tuned for FLAQ-AMR's upgrade to [Sanibel](https://github.com/BPHL-Molecular/Sanibel), a platform agnostic [Nextflow](https://www.nextflow.io/) workflow with added tools for expanded species-specific subtyping. Sanibel is currently under active development.
 
